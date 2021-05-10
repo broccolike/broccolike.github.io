@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ZM-blogs">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+  <meta name="description" content="SpringIntegration学习笔记(1)  最近更换了工作现场, 内容也从业务开发变为了开发支援, 客户提供基于SpringIntegration的框架, 我们学习后为客户的项目提供AP基盘开发支援. 本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST SpringIntegraion在DI上与SpringBoot基本相同, Bean可以通过xml或注解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringIntegration-学习笔记1">
+<meta property="og:url" content="http://example.com/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/index.html">
 <meta property="og:site_name" content="ZM-blogs">
+<meta property="og:description" content="SpringIntegration学习笔记(1)  最近更换了工作现场, 内容也从业务开发变为了开发支援, 客户提供基于SpringIntegration的框架, 我们学习后为客户的项目提供AP基盘开发支援. 本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST SpringIntegraion在DI上与SpringBoot基本相同, Bean可以通过xml或注解">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-10T15:32:42.000Z">
+<meta property="article:modified_time" content="2021-05-10T16:13:14.917Z">
 <meta property="article:author" content="ZM">
+<meta property="article:tag" content="Java-FrameWork-SpringIntegration">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/2021/">
+<link rel="canonical" href="http://example.com/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | ZM-blogs</title>
+  <title>SpringIntegration-学习笔记1 | ZM-blogs</title>
   
 
 
@@ -159,90 +164,97 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 3 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZM-blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SpringIntegration-学习笔记1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-11 00:32:42 / 修改时间：01:13:14" itemprop="dateCreated datePublished" datetime="2021-05-11T00:32:42+09:00">2021-05-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
+        <h2>SpringIntegration学习笔记(1)</h2>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-11T00:32:42+09:00"
-              content="2021-05-11">
-          05-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" itemprop="url">
-            <span itemprop="name">SpringIntegration-学习笔记1</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-10T16:34:38+09:00"
-              content="2021-05-10">
-          05-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/10/test-blog/" itemprop="url">
-            <span itemprop="name">test blog</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-10T15:47:06+09:00"
-              content="2021-05-10">
-          05-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/10/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<p>最近更换了工作现场, 内容也从业务开发变为了开发支援, 客户提供基于SpringIntegration的框架, 我们学习后为客户的项目提供AP基盘开发支援.</p>
+<p>本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST</p>
+<p>SpringIntegraion在DI上与SpringBoot基本相同, Bean可以通过xml或注解进行注入, 但相比SpringBoot多出了几个关键组件. 读了简书等几个博客上的文章, 结合项目中的见闻, 记录一下自己的学习内容.</p>
+<ul>
+<li>Message: 消息单元</li>
+<li>Message Channel: 负责连接消息处理的节点, 将Message从生产者传送给消费者. 根据消费者的多少可以分为point to point和publish-subscribe.根据消息的传输方式的不同, 区分为同步BIO和异步NIO. 本次参与的项目中, 以点对点的异步传输为主要方式.</li>
+<li>Message Endpoint: 消息处理节点, 消息从节点进入通道, 也从节点离开通道. 常见的有以下EndPoint: <ul>
+<li>Channel Adaptor: 特点是单向的消息流, 单向进入通道或离开通道</li>
+<li>Messaging Gateway: 不是单向的, 即有进入通道的, 也有离开通道的</li>
+<li>Service Activator: 该节点调用服务来处理输入的消息, 并将服务返回的数据发送到输出通道. 在SpringIntegraion中, 调用的方法被限定为本地方法调用.</li>
+<li>Router: 路由器, 将输入的消息分配到不同的Channel中. </li>
+<li>Splitter: 将输入的Message拆分为子消息</li>
+<li>Aggretator: 将输入的多个消息合并为一个消息. 合并条件通常需要通过事物管理进行控制.</li>
+</ul>
+</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java-FrameWork-SpringIntegration/" rel="tag"># Java-FrameWork-SpringIntegration</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/10/test-blog/" rel="prev" title="test blog">
+      <i class="fa fa-chevron-left"></i> test blog
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -295,6 +307,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">SpringIntegration学习笔记(1)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

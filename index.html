@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -21,10 +21,10 @@
   </script>
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="broccolike-github-blogs">
+<meta property="og:title" content="ZM-blogs">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="broccolike-github-blogs">
-<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ZM-blogs">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="ZM">
 <meta name="twitter:card" content="summary">
 
@@ -37,11 +37,11 @@
     sidebar: "",
     isHome : true,
     isPost : false,
-    lang   : 'ja'
+    lang   : 'zh-CN'
   };
 </script>
 
-  <title>broccolike-github-blogs</title>
+  <title>ZM-blogs</title>
   
 
 
@@ -81,7 +81,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="ナビゲーションバーの切り替え">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -92,7 +92,7 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">broccolike-github-blogs</h1>
+      <h1 class="site-title">ZM-blogs</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -110,12 +110,32 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>ホーム</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
 
   </li>
   </ul>
@@ -144,7 +164,83 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ja">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZM-blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="post-title-link" itemprop="url">SpringIntegration-学习笔记1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-11 00:32:42 / 修改时间：01:13:14" itemprop="dateCreated datePublished" datetime="2021-05-11T00:32:42+09:00">2021-05-11</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2>SpringIntegration学习笔记(1)</h2>
+
+<p>最近更换了工作现场, 内容也从业务开发变为了开发支援, 客户提供基于SpringIntegration的框架, 我们学习后为客户的项目提供AP基盘开发支援.</p>
+<p>本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST</p>
+<p>SpringIntegraion在DI上与SpringBoot基本相同, Bean可以通过xml或注解进行注入, 但相比SpringBoot多出了几个关键组件. 读了简书等几个博客上的文章, 结合项目中的见闻, 记录一下自己的学习内容.</p>
+<ul>
+<li>Message: 消息单元</li>
+<li>Message Channel: 负责连接消息处理的节点, 将Message从生产者传送给消费者. 根据消费者的多少可以分为point to point和publish-subscribe.根据消息的传输方式的不同, 区分为同步BIO和异步NIO. 本次参与的项目中, 以点对点的异步传输为主要方式.</li>
+<li>Message Endpoint: 消息处理节点, 消息从节点进入通道, 也从节点离开通道. 常见的有以下EndPoint: <ul>
+<li>Channel Adaptor: 特点是单向的消息流, 单向进入通道或离开通道</li>
+<li>Messaging Gateway: 不是单向的, 即有进入通道的, 也有离开通道的</li>
+<li>Service Activator: 该节点调用服务来处理输入的消息, 并将服务返回的数据发送到输出通道. 在SpringIntegraion中, 调用的方法被限定为本地方法调用.</li>
+<li>Router: 路由器, 将输入的消息分配到不同的Channel中. </li>
+<li>Splitter: 将输入的Message拆分为子消息</li>
+<li>Aggretator: 将输入的多个消息合并为一个消息. 合并条件通常需要通过事物管理进行控制.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/test-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -154,7 +250,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="broccolike-github-blogs">
+      <meta itemprop="name" content="ZM-blogs">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -167,10 +263,10 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">投稿日</span>
+              <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="作成日：2021-05-10 16:34:38 / 修正日：16:36:45" itemprop="dateCreated datePublished" datetime="2021-05-10T16:34:38+09:00">2021-05-10</time>
+              <time title="创建时间：2021-05-10 16:34:38 / 修改时间：16:36:45" itemprop="dateCreated datePublished" datetime="2021-05-10T16:34:38+09:00">2021-05-10</time>
             </span>
 
           
@@ -203,7 +299,7 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="ja">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -213,7 +309,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="broccolike-github-blogs">
+      <meta itemprop="name" content="ZM-blogs">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -226,9 +322,9 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">投稿日</span>
+              <span class="post-meta-item-text">发表于</span>
 
-              <time title="作成日：2021-05-10 15:47:06" itemprop="dateCreated datePublished" datetime="2021-05-10T15:47:06+09:00">2021-05-10</time>
+              <time title="创建时间：2021-05-10 15:47:06" itemprop="dateCreated datePublished" datetime="2021-05-10T15:47:06+09:00">2021-05-10</time>
             </span>
 
           
@@ -314,10 +410,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          見出し
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          概要
+          站点概览
         </li>
       </ul>
 
@@ -336,13 +432,13 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">ポスト</span>
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">タグ</span>
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
       </div>
   </nav>
 </div>
@@ -374,7 +470,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">ZM</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
