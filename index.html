@@ -190,7 +190,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-11 00:32:42 / 修改时间：01:13:14" itemprop="dateCreated datePublished" datetime="2021-05-11T00:32:42+09:00">2021-05-11</time>
+              <time title="创建时间：2021-05-11 00:32:42 / 修改时间：01:18:04" itemprop="dateCreated datePublished" datetime="2021-05-11T00:32:42+09:00">2021-05-11</time>
             </span>
 
           
@@ -207,10 +207,10 @@
           <h2>SpringIntegration学习笔记(1)</h2>
 
 <p>最近更换了工作现场, 内容也从业务开发变为了开发支援, 客户提供基于SpringIntegration的框架, 我们学习后为客户的项目提供AP基盘开发支援.</p>
-<p>本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST</p>
+<p>本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST提供前端到中间AP的通信, 中间AP变换为JavaBean类型后再次变型为byte数组, 用于与后端的TCP通信.</p>
 <p>SpringIntegraion在DI上与SpringBoot基本相同, Bean可以通过xml或注解进行注入, 但相比SpringBoot多出了几个关键组件. 读了简书等几个博客上的文章, 结合项目中的见闻, 记录一下自己的学习内容.</p>
 <ul>
-<li>Message: 消息单元</li>
+<li>Message: 消息单元分为header和payload两部分, 在本次提供的框架中, 可以依据具体业务调整不同类型消息报文, 可以基于REST的Json, 也有基于TCP的byte数组.</li>
 <li>Message Channel: 负责连接消息处理的节点, 将Message从生产者传送给消费者. 根据消费者的多少可以分为point to point和publish-subscribe.根据消息的传输方式的不同, 区分为同步BIO和异步NIO. 本次参与的项目中, 以点对点的异步传输为主要方式.</li>
 <li>Message Endpoint: 消息处理节点, 消息从节点进入通道, 也从节点离开通道. 常见的有以下EndPoint: <ul>
 <li>Channel Adaptor: 特点是单向的消息流, 单向进入通道或离开通道</li>
