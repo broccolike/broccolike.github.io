@@ -20,28 +20,34 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ZM-blogs">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Java基础编程思想复习2  抽象类 abstract   抽象类的概念  父类知道子类要完成某个功能, 但每个子类的实现是不同的.  子类以后也只会用自己重写的功能, 那么父类就可以把这个功能定义成抽象方法 抽象类就是拥有抽象方法的类 抽象方法: 没有方法体, 只有方法签名和返回值, 必须用abstract修饰   抽象类的使用  抽象类的作用就是为了让子类继承, 约束子类一定要重写方法 一个类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础编程思想复习2">
+<meta property="og:url" content="http://example.com/2021/05/18/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A02/index.html">
 <meta property="og:site_name" content="ZM-blogs">
+<meta property="og:description" content="Java基础编程思想复习2  抽象类 abstract   抽象类的概念  父类知道子类要完成某个功能, 但每个子类的实现是不同的.  子类以后也只会用自己重写的功能, 那么父类就可以把这个功能定义成抽象方法 抽象类就是拥有抽象方法的类 抽象方法: 没有方法体, 只有方法签名和返回值, 必须用abstract修饰   抽象类的使用  抽象类的作用就是为了让子类继承, 约束子类一定要重写方法 一个类">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-18T06:59:35.000Z">
+<meta property="article:modified_time" content="2021-05-18T14:08:04.548Z">
 <meta property="article:author" content="ZM">
+<meta property="article:tag" content="基础">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/05/18/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A02/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>ZM-blogs</title>
+  <title>Java基础编程思想复习2 | ZM-blogs</title>
   
 
 
@@ -159,9 +165,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -177,10 +184,9 @@
       <meta itemprop="name" content="ZM-blogs">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/18/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A02/" class="post-title-link" itemprop="url">Java基础编程思想复习2</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Java基础编程思想复习2
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -221,7 +227,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2>Java基础编程思想复习2</h2>
+        <h2>Java基础编程思想复习2</h2>
 
 <h3>抽象类 abstract</h3>
 
@@ -459,504 +465,34 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目标:枚举类用于做信息标志和信息分类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 常量(public static final)做信息标志和分类，虽然也可以，但是入参不受控制，太随性不够严谨。</span></span><br><span class="line"><span class="comment"> * 枚举用于此处，更加优雅。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Direction</span></span>&#123;</span><br><span class="line">    UP,DOWN,LEFT,RIGHT</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnumDemo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        move(Oritation.LEFT);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//控制游戏角色移动</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">(Direction direction)</span></span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> (direction)&#123;</span><br><span class="line">            <span class="keyword">case</span> UP:</span><br><span class="line">                System.out.println(<span class="string">&quot;up&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> DOWN:</span><br><span class="line">                System.out.println(<span class="string">&quot;down&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> LEFT:</span><br><span class="line">                System.out.println(<span class="string">&quot;left&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> RIGHT:</span><br><span class="line">                System.out.println(<span class="string">&quot;right&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/" class="post-title-link" itemprop="url">履歴書</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-13 01:28:58 / 修改时间：02:13:12" itemprop="dateCreated datePublished" datetime="2021-05-13T01:28:58+09:00">2021-05-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          Need Password
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/" rel="prev" title="履歴書">
+      <i class="fa fa-chevron-left"></i> 履歴書
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/12/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/12/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A01/" class="post-title-link" itemprop="url">Java基础编程思想复习1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-12 01:29:05" itemprop="dateCreated datePublished" datetime="2021-05-12T01:29:05+09:00">2021-05-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-18 16:02:23" itemprop="dateModified" datetime="2021-05-18T16:02:23+09:00">2021-05-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E5%9F%BA%E7%A1%80/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/" itemprop="url" rel="index"><span itemprop="name">编程思想</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2>Java基础编程思想复习1</h2>
-
-<ul>
-<li><p>知识回顾</p>
-<ul>
-<li><p>面向对象:</p>
-<p>在代码层面, 类中有且仅有5种成分.</p>
-<ul>
-<li><p>成员变量</p>
-</li>
-<li><p>成员方法</p>
-</li>
-<li><p>构造器</p>
-<p>( 类中默认自带一个无参构造器, 即使不写它也是存在的, 如果它写了一个构造器, 那么无参构造器就被覆盖了)</p>
-</li>
-<li><p>代码块</p>
-</li>
-<li><p>内部类</p>
-</li>
-</ul>
-<p>只要不是以上五种成分, 就必定报错.</p>
-<p>this关键字: this关键字代表当前对象的引用, 可以在构造器和实例方法中使用. this在方法中时, 谁调用这个方法, this就代表谁, 在构造器中, this代表了当前正在初始化的对象的引用. </p>
-</li>
-</ul>
-</li>
-<li><p>static关键字</p>
-<p>有static修饰的变量或方法属于类本身, 变量与类一起加载一次, 可以通过类名直接调用.<br>无static修饰的变量或方法属于类的每个对象, 叫做实例变量或实例方法, 有多少个对象, 变量就加载多少次, 必须通过类的对象调用. <br>实例可以访问静态变量或方法, 静态可以访问静态变量或方法, 静态不可以访问实例变量或方法.</p>
-</li>
-<li><p>继承: </p>
-<p>继承的作用: </p>
-<ul>
-<li>继承可以提高代码的复用性, 相同代码向上抽取到父类. </li>
-<li>子类直接继承父类, 可以得到父类的方法, 还可以定义子类特有方法, 通常子类更强大</li>
-</ul>
-<p>通常情况下, 若几个类有相同的功能或方法, 那么就把他们向上抽取到父类中, 重复利用.</p>
-<p>注意:</p>
-<ul>
-<li>子类不能继承父类的构造器, 子类有自己的构造器</li>
-<li>子类是否可以继承父类的私有成员变量或方法? 可以, 但无法直接访问.</li>
-<li>子类是否可以得到父类的静态成员? 不可以, 但可以共享访问.</li>
-</ul>
-<p>继承后成员变量的访问特点:</p>
-<ul>
-<li>就近原则: 子类有就找子类, 子类没有就找父类, 再没有就报错</li>
-<li>this代表当前对象的引用, super代表了父类对象的引用</li>
-</ul>
-<p>继承后方法的重写: </p>
-<ul>
-<li>子类继承父类方法, 但无法满足业务需求, 需要重写方法内容进行覆盖</li>
-<li>方法重写时需要加上@Override注解: 可读性好，安全，优雅</li>
-</ul>
-<p>方法重写的要求: </p>
-<ul>
-<li>方法名称和形参列表必须与父类方法保持一致</li>
-<li>返回值类型要么与父类保持一致, 要么范围比父类更小</li>
-<li>权限修饰符应该与父类相同或者比父类更大</li>
-<li>抛出的异常应该与父类一致或范围更小</li>
-<li>总体建议: 加上@Override注解, “申明不变, 重新实现”, 私有方法不能被重写.</li>
-</ul>
-<p>继承后构造器的特点: </p>
-<ul>
-<li><p>子类的构造器第一行默认访问父类的无参构造器, 再执行自己的构造器</p>
-</li>
-<li><p>为什么:</p>
-<ul>
-<li><p>子类构造器默认第一行为super(); 调用父类午餐构造器, 写不写都存在</p>
-<p>( 如果父类中没有无参构造器, 编译也就会失败. )</p>
-</li>
-<li><p>子类继承父类就得到了父类的属性和行为. 调用子类构造器初始化子类对象的时候, 必须先调用父类构造器初始化父类的属性和行为. 正所谓先有爹后有儿. </p>
-</li>
-</ul>
-</li>
-</ul>
-<p>继承后super调用父类构造器:</p>
-<ul>
-<li><p>具体场景: 可以在子类构造器中通过super(…);依据参数调用父类构造器, 以便调用父类构造器初始化继承自父类的数据.</p>
-</li>
-<li><pre><code class="java">class Monkey extends Animal&#123;
-    public Monkey(String name , int age , char sex) &#123;
-        super(name, age, sex);
-    &#125;
-
-    public void eatBanana()&#123;
-        System.out.println(getName() + &quot;--&gt;&quot; + getAge() + &quot;--&gt;&quot; + getSex() + &quot;在吃香蕉&quot;);
-    &#125;
-&#125;
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p>this和super关键字的使用:</p>
-<ul>
-<li>this(…): 可以用来接用本类其他构造器</li>
-<li>super(…): 调用父类构造器</li>
-</ul>
-</li>
-<li><p>继承的特点总结: </p>
-<ul>
-<li><p>单继承：一个类只能继承一个直接父类。</p>
-</li>
-<li><p>为什么Java是单继承？</p>
-<p>答：反证法，假如C继承A和B，若AB中有同名方法，C调用就懵逼了</p>
-</li>
-<li><p>多层继承：一个类可以间接继承多个父类。（家谱）</p>
-</li>
-<li><p>一个类可以有多个子类</p>
-</li>
-<li><p>一个类要么默认继承了Object类，要么间接继承了Object类，祖宗类。</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="post-title-link" itemprop="url">SpringIntegration-学习笔记1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-11 00:32:42" itemprop="dateCreated datePublished" datetime="2021-05-11T00:32:42+09:00">2021-05-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-12 01:31:13" itemprop="dateModified" datetime="2021-05-12T01:31:13+09:00">2021-05-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/Framework/" itemprop="url" rel="index"><span itemprop="name">Framework</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2>SpringIntegration学习笔记(1)</h2>
-
-<p>最近更换了工作现场, 内容也从业务开发变为了开发支援, 客户提供基于SpringIntegration的框架, 我们学习后为客户的项目提供AP基盘开发支援.</p>
-<p>本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST提供前端到中间AP的通信, 中间AP变换为JavaBean类型后再次变型为byte数组, 用于与后端的TCP通信.</p>
-<p>SpringIntegraion在DI上与SpringBoot基本相同, Bean可以通过xml或注解进行注入, 但相比SpringBoot多出了几个关键组件. 读了简书等几个博客上的文章, 结合项目中的见闻, 记录一下自己的学习内容.</p>
-<ul>
-<li>Message: 消息单元分为header和payload两部分, 在本次提供的框架中, 可以依据具体业务调整不同类型消息报文, 可以基于REST的Json, 也有基于TCP的byte数组.</li>
-<li>Message Channel: 负责连接消息处理的节点, 将Message从生产者传送给消费者. 根据消费者的多少可以分为point to point和publish-subscribe.根据消息的传输方式的不同, 区分为同步BIO和异步NIO. 本次参与的项目中, 以点对点的异步传输为主要方式.</li>
-<li>Message Endpoint: 消息处理节点, 消息从节点进入通道, 也从节点离开通道. 常见的有以下EndPoint: <ul>
-<li>Channel Adaptor: 特点是单向的消息流, 单向进入通道或离开通道</li>
-<li>Messaging Gateway: 不是单向的, 即有进入通道的, 也有离开通道的</li>
-<li>Service Activator: 该节点调用服务来处理输入的消息, 并将服务返回的数据发送到输出通道. 在SpringIntegraion中, 调用的方法被限定为本地方法调用.</li>
-<li>Router: 路由器, 将输入的消息分配到不同的Channel中. </li>
-<li>Splitter: 将输入的Message拆分为子消息</li>
-<li>Aggretator: 将输入的多个消息合并为一个消息. 合并条件通常需要通过事物管理进行控制.</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/test-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/10/test-blog/" class="post-title-link" itemprop="url">test blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-10 16:34:38 / 修改时间：16:36:45" itemprop="dateCreated datePublished" datetime="2021-05-10T16:34:38+09:00">2021-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Test Context</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/10/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-10 15:47:06" itemprop="dateCreated datePublished" datetime="2021-05-10T15:47:06+09:00">2021-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -1009,6 +545,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Java基础编程思想复习2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">抽象类 abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">接口 interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">代码块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.5.</span> <span class="nav-text">单例设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.6.</span> <span class="nav-text">枚举</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
