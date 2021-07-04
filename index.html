@@ -165,6 +165,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/04/SHELL%E8%84%9A%E6%9C%AC%E5%BF%83%E5%BE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZM-blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/04/SHELL%E8%84%9A%E6%9C%AC%E5%BF%83%E5%BE%97/" class="post-title-link" itemprop="url">SHELL脚本心得</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-04 11:01:13 / 修改时间：12:28:17" itemprop="dateCreated datePublished" datetime="2021-07-04T11:01:13+09:00">2021-07-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SHELL/" itemprop="url" rel="index"><span itemprop="name">SHELL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2> SHELL脚本心得 </h2>
+
+<p>很久没更新了, 最近一直在宅勤务, 越是在宅, 人就越懒, remote关机之后什么都不想做.</p>
+<p>客户又通知项目即将结束, 完全进入了一种什么也不想干的状态. 赶快出社吧, 否则我感觉自己很快就要废掉了.</p>
+<p>回归正题, 前几周客户现场中需要用到SHELL, 完全没写过这东西的我一脸懵逼. 除了知道echo命令能打印, #是注释, 其他一概不知.</p>
+<p>一边谷歌一边写, 一半修改一半抄, 终于搞出来点东西. 期间客户也要求修改过几次.</p>
+<p>心得体会:</p>
+<ul>
+<li>对整个脚本文件的执行结果的返回值, 最好让它变得有意义. 例如, 返回0代表正常结束, 返回大于等于1的结果代表异常终止.( 主要是方便其他脚本的调用 )</li>
+<li>以上赋予返回值的意义最好在注释中写明.</li>
+<li>注释中还需要写明此脚本接收参数的意义</li>
+<li>解耦: 依存关系较强, 且需要频繁变更的参数, 最好分离到.env( 后缀名随便啦… )文件中进行读取, 这样后续更改参数只需要修改环境文件, 并不需要更改任何脚本中的内容.</li>
+<li>如果以上的环境文件中需要读取list, 那么换行符需要从windows换行符crlf替换为linux换行符lf, 否则在识别中可能出现问题</li>
+<li>git for windows拉取代码到windows开发环境后, 默认将换行符从crlf替换为lf. 执行命令<code>git config --global core.autocrlf false</code>进行修改即可. 下次最好安装的时候就设定好, 被问到<code>configuring the line ending conversation</code>的时候直接选择false. 详细参照qiita上的文章 ( 日本語 ) , <a target="_blank" rel="noopener" href="https://qiita.com/uggds/items/00a1974ec4f115616580">気をつけて！Git for Windowsにおける改行コード</a></li>
+<li>上代码（情報セキュリティのため、ソースの変数などは現場に使われた内容から修正してた。下記のSHELLは動作確認はしていない。）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">===============================================================</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 処理概要：キャッシュデータリフレッシュ</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 引数　　：キャッ複数可　大文字（複数可、必要なものだけ可）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 　　　　　例） ./cacheRefresh CACHE1 CACHE2 CACHE3</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 戻り値　：0 = リフレッシュ完了（正常終了）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 　　　　　&gt;0 = リフレッシュ失敗（異常終了）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line"><span class="meta">#</span><span class="bash">===============================================================</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 入力された引数をPARAMに渡す</span></span><br><span class="line">PARAMS=$&#123;@&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> キャッシュ名を格納する変数</span></span><br><span class="line">CAHCES=</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 引数はない場合、異常終了する。戻り値10</span></span><br><span class="line">if [ $# == 0 ];then</span><br><span class="line">  echo &quot;キャッシュ名を入力してください。&quot;</span><br><span class="line">  exit 10</span><br><span class="line">fi</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 引数がない場合以外なら、処理開始</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 入力された引数を一つずつで出す</span></span><br><span class="line">for PARAM in $&#123;PARAMS&#125;</span><br><span class="line">do</span><br><span class="line"><span class="meta">  #</span><span class="bash"> キャッシュ名がconf/caches.listに存在しない場合はキャッシュ名不正と定義する。</span></span><br><span class="line"><span class="meta">  #</span><span class="bash"> キャッシュ名不正の場合は、HITを0で戻る</span></span><br><span class="line">  HIT=0</span><br><span class="line"><span class="meta">  #</span><span class="bash"> 通常処理。conf/caches.listにある内容を取り出す。</span></span><br><span class="line">  for CHECK_LIST_CACHES in `cat conf/caches.list`</span><br><span class="line">  do</span><br><span class="line">    # 取り出されたPARAMと一致する場合、HITを1で戻る</span><br><span class="line">    if [ $&#123;CHECK_LIST_CACHES&#125; == $&#123;PARAM&#125; ];then</span><br><span class="line">      HIT=1</span><br><span class="line">      # 引数が正常処理の場合、連結する。最初CACHESがからの場合「,」は入れない。</span><br><span class="line">      if [ -z $&#123;CACHES&#125; ];then</span><br><span class="line">        CACHES=\&quot;$&#123;PARAM&#125;\&quot;</span><br><span class="line">      else</span><br><span class="line">        CACHES=$&#123;CACHES&#125;,\&quot;$&#123;PARAM&#125;\&quot;</span><br><span class="line">      fi</span><br><span class="line">    fi</span><br><span class="line">  done</span><br><span class="line">  </span><br><span class="line"><span class="meta">  #</span><span class="bash"> キャッシュ名が不正の場合は処理異常終了。戻り値10</span></span><br><span class="line">  if [ $&#123;HIT&#125; == 0 ];then</span><br><span class="line">    echo &quot;不正キャッシュ名があります。対象キャッシュ名1=$&#123;PARAM&#125;&quot;</span><br><span class="line">    exit 10</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> curl用のパラメータを設定する。</span></span><br><span class="line">HOST=localhost</span><br><span class="line"></span><br><span class="line">PORT=12345</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> curl用のJSONデータを用意する。</span></span><br><span class="line">JSON=$(cat &lt;&lt;EOS</span><br><span class="line">&#123;&quot;name&quot;:&quot;cache&quot;,&quot;branch&quot;:&quot;master&quot;,&quot;doMain&quot;:&quot;refresh&quot;,&quot;data&quot;:&#123;&quot;cacheNames&quot;:[$&#123;CACHES&#125;]&#125;&#125;</span><br><span class="line">EOS</span><br><span class="line">)</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> curlを実行する</span></span><br><span class="line">curl -X GET -H &quot;Content-Type: application/json&quot; -d $&#123;JSON&#125; http://$&#123;HOST&#125;:$&#123;PORT&#125;/target</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> SHELLの出力。戻り値に意味を持たせる。</span></span><br><span class="line">if[ $? -eq 0 ];then</span><br><span class="line">  echo &quot;リフレッシュ完了&quot;</span><br><span class="line">  exit 0;</span><br><span class="line">else</span><br><span class="line">  echo &quot;リフレッシュ失敗&quot;</span><br><span class="line">  exit 1;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/18/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1022,20 +1109,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
