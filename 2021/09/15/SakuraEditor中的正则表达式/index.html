@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Need Password">
+  <meta name="description" content="SakuraEditor中的正则表达式  最近换了现场, 考了手动挡驾照, 太忙了, 再不写东西恐怕要长草了.  顺便谈谈这个现场的感受吧, 感觉这个现场并没有上一个现场的内容有深度. 作业内容更多集中在测试和取evidence, 目前还没有摸到开发. 测试环境相当复杂…顺便今晚把抖音删了, 在宅勤务的死敌啊!  最近一个月, 因为要频繁整理evidence, 所以SakuraEditor用的比较">
 <meta property="og:type" content="article">
-<meta property="og:title" content="履歴書">
-<meta property="og:url" content="http://example.com/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/index.html">
+<meta property="og:title" content="SakuraEditor中的正则表达式">
+<meta property="og:url" content="http://example.com/2021/09/15/SakuraEditor%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
 <meta property="og:site_name" content="ZM-blogs">
-<meta property="og:description" content="Need Password">
+<meta property="og:description" content="SakuraEditor中的正则表达式  最近换了现场, 考了手动挡驾照, 太忙了, 再不写东西恐怕要长草了.  顺便谈谈这个现场的感受吧, 感觉这个现场并没有上一个现场的内容有深度. 作业内容更多集中在测试和取evidence, 目前还没有摸到开发. 测试环境相当复杂…顺便今晚把抖音删了, 在宅勤务的死敌啊!  最近一个月, 因为要频繁整理evidence, 所以SakuraEditor用的比较">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-12T16:28:58.000Z">
-<meta property="article:modified_time" content="2021-05-12T17:13:12.578Z">
+<meta property="article:published_time" content="2021-09-14T15:46:22.000Z">
+<meta property="article:modified_time" content="2021-09-14T16:36:33.119Z">
 <meta property="article:author" content="ZM">
-<meta property="article:tag" content="RESUME">
+<meta property="article:tag" content="心得">
+<meta property="article:tag" content="杂项">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/">
+<link rel="canonical" href="http://example.com/2021/09/15/SakuraEditor%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>履歴書 | ZM-blogs</title>
+  <title>SakuraEditor中的正则表达式 | ZM-blogs</title>
   
 
 
@@ -171,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/SakuraEditor%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -184,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          履歴書
+          SakuraEditor中的正则表达式
         </h1>
 
         <div class="post-meta">
@@ -195,7 +196,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-13 01:28:58 / 修改时间：02:13:12" itemprop="dateCreated datePublished" datetime="2021-05-13T01:28:58+09:00">2021-05-13</time>
+              <time title="创建时间：2021-09-15 00:46:22 / 修改时间：01:36:33" itemprop="dateCreated datePublished" datetime="2021-09-15T00:46:22+09:00">2021-09-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%9D%82%E9%A1%B9/" itemprop="url" rel="index"><span itemprop="name">技术杂项</span></a>
+                </span>
             </span>
 
           
@@ -209,18 +219,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Sorry, wrong password." data-whm="Sorry, wrong password, but you can read it.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="5cc7cd737495893e00d77c1842cc42efa75f9fc6fe27dca6e1ecbd9f72d6f384">9e1a7ea5802304175b315f1dcf53f90a59aaa98c658975c66d6683e3f5278a1b6fa1894406139885d426863ab9ae13763bd6cab2f288550ea256266fe642dd286639827e1b75936273f98ebc7f0082d2dd3dd32a893a094c455e2319d73f3e35aeb6e951fd675b6003dff8f80eff3bd2b8cb874d8df9286a002c89217f189adc55fc639089fd56156c025ff75c094c86827bc4bf86399524254a8c3ad1df36270942ca4f8394c3eacf79e867c6bc42d0ac391cfd7925559e8d2ccc904184c8f20aa7fbd4b4851a376ebac924f12ae81f47bc484cc1ac51bad6c00f6b68dd72e83856347425d2fe26e19a6353d8cc4d179cfd54eeb0807772ca9d33580904783b2bccc747a93484661963902450a960626c118f1d02e6cb0dadbcd8f28a0e18e5a30a4d12c34e413fb74aa77954eac8e0bab7b8b862decfbebd51f162586b329556ae7ecc07d4aa2076a5ff777c9123086be4e80c10ac55ebda08b4ea5fcfbab7b1ccffb47f125e832b54151b38e9ebade076deb7f44a2662027e4edf38a033f4c6c98ac4c3036c7ee82b14f1c98cb8ed88e2da9056d485634d95c0a58eb79ede943f7b58c34c7d90e51355c15e0db519277be9eb8f739522440f11d2c309b402ad091b59216b1757945fd41f0b2801de4fca7c9b0dc9e4a3bc816b1515ad59bf4c6f788f88c3a9ef019cdddd2001ead05b3a22bee8a926accd1a6cd77519953c17b2c40db11976204ac8c98404b8d67de66a9d78b0529efa0873de93f16c15da9b11289a5b8f2e34892d230848e7f486175ffa98393264192d166d681f032615b82fcfb10a43b1cfb593fad1cd04876319711f77043584b02312061d8aa55a94ef48aef48dc193957c8b0d611527f9269f60c9f673e6d426eee937977f33f8a2e01730a37d43a9c3727776df8c3bf556cecde7d5449b66a40a2b331b9dbbc0b9cb2294193fe0b43b4d27421b9aa57ff4892c163cb50c0930e937d75b26961c52ae3b94a0c6d9d9929a40c8db28e0b78ab3f944e99591bbd130fe5fcd2c135530f9ff6643012b2f5bc6c4f4495eea9c1545938dff9df6c5d4f5714cb9f8d8e891190133c954a14dc06f4797698fec0eacf60c21674f6c672b2a437ca975d9cdda48b6d831d2be3170cacba725cc6bd1aa40e0c997a37e97d9875cd3b366b59b553ac3711bfb2c23e1c88aaf6f1e7e6b3c47ef139d44460c0f4c18beb7cae1a7317c6b7f9ce247028f4cb8f394e3a5571dcd51524895a45b3e0110c22dbfae734f9bfa06b9b7dee35f1c0e9e22f63ae0e437ac944f0da11213f4408732a32638e8a769bb8c788e9096d5cf1fbc846b4a30a9d000bc17ad1c109171f6ac215e238cb1c4b0fecfc991b764d43b3a3464ea4866724b7a6159a27b8d4bd09c60956602422d93b5a7f79e142c612a18367b0bfa5523ebca072624dfb6d3331e6b312958547f885d7c5b6eb6ac86c51b0f783c1f20a0bccfcb2dcd1d3c669e66e16f119d3c8acb5c0e0214f7064b8ce09025a709f6bdca5d0a19f52ac51c5b09f6dbc540620209e51652e64be6d0d3d0961b674880db689a175af20f41a3d62b1cac512b296ad9aea9668dd9ff24ff24e43a2a41adf80f87530678653b51e373b185e9d69fc73f73823994e36577753ff2fe35c0322f667ca90b465e0829d9e956e4555c50c00fa90574da7ca11af88f89c5693812faf8ae8f2b07173e5346771c45be07cc44042ff13ff48aab6c5f8dc6283cccc582b19694b2201bc2879c5148da4f8dc432ec56f0f2e4e7d14a74268b74a5cc16b91c420ddb44f9776f90f350dfb2097e140e3bcfebd33d6749b6f3af0cf4e476e88b6e32fdcf72ccdaf35bcba704f3d09ba73601bd4c0fb43c541c0fb77500e4fe2db5a76f9335d5a65eb14b5f2e350b2456d42d544fe00fcb08d55ccea0bcefb070a4f74bf63d335859c2973e4adab05e3f7ac06a5567ab05e3ebfb3f614df9f8fb33d4ba53cbf69c0bbba60e01b757bf64f8feacbfc5fa1b140a3f7542fd0d076730df52f92b22dad9d82f26f94cee96265a468d3b5341b85ec369540db8753f9b20f16218982aed1e9ec22dec2dbebb283d20add2d7fa75c090ad985f2c739a79f12c422787b7375cfeb835ca57e1b35377185c7ed87af5cf0c92929bb295c9248e4ba0444fed8f3d1b997299b9922e428b0f7e5816c599a4ade0f2b897ebb5fdb6cfd328f5a6e2b51d1169b3acb36a6cc66637313535d2fe6d186103c088d53b8d917011123a5805b0d4eae75b33ae42127181ed9881b6a45db7948176bdce8da414731ded487a204e5beded1706a87852c275554be4ddc54b697e650f7e2f17b2adfcd16d4081a657138acc7e8fd411cba5ccb0fc13d8d323c590c9fcd13b5f16ec4da71c8ad2f6e2d7f0dad18c2fa5400f4161935ff095969430c2d4dfa818f3d44eec40cb5c5dcdd0e22612a53e182cbc4e7d0fa6c3abe32180ecb0274d9429e6a7ec02cc07de42d4c229eecdad1769431284aaebc023d2b7d1a5e9</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Please Enter Password</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+        <h2>SakuraEditor中的正则表达式</h2>
+
+<p>最近换了现场, 考了手动挡驾照, 太忙了, 再不写东西恐怕要长草了. </p>
+<p>顺便谈谈这个现场的感受吧, 感觉这个现场并没有上一个现场的内容有深度. 作业内容更多集中在测试和取evidence, 目前还没有摸到开发. 测试环境相当复杂…顺便今晚把抖音删了, 在宅勤务的死敌啊! </p>
+<p>最近一个月, 因为要频繁整理evidence, 所以SakuraEditor用的比较多. 频繁从其中提取文字, 也就导致需要使用正则表达式匹配文字内容, 例如提取表名等等…</p>
+<p>特定行操作</p>
+<ul>
+<li>将包含指定字符串的行删除（置换为空）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">置换前</span><br><span class="line">^.*指定字符串.*\r\n</span><br><span class="line">置换后</span><br><span class="line">&lt;空&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将包含指定字符串的行抽出（保留）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">置换前</span><br><span class="line">^((?!指定字符串).)*\r\n</span><br><span class="line">置换后</span><br><span class="line">&lt;空&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从指定字符串开始到行末删除（置换为空）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">置换前</span><br><span class="line">指定字符串.*</span><br><span class="line">置换后</span><br><span class="line">&lt;空&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从行开头开始到指定文字删除（置换为空）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">置换前</span><br><span class="line">^.*?(?=指定字符串)</span><br><span class="line">置换后</span><br><span class="line">&lt;空&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>其他正则表达</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\t  tab</span><br><span class="line">\r  CR回车</span><br><span class="line">\n  LF换行</span><br><span class="line">\d  所有数字 [0-9]</span><br><span class="line">\D  所有数字以外的数字 [^0-9]</span><br><span class="line">\w  字母,下划线,数字[a-zA-Z_0-9]</span><br><span class="line">\W  字母,下划线,数字以外的文字[^a-zA-Z_0-9]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">补充:</span><br><span class="line">CR回车,十进制ASCII码是13,十六进制代码为0x0D,Carriage Return</span><br><span class="line">LF换行,十进制ASCII码是10,十六进制代码为0x0A,Line Feed</span><br><span class="line">Dos和Windows系统中采用“回车+换行符,CR/LF”表示下一行,即“\r\n”</span><br><span class="line">UNIX/Linux系统中采用“换行符,LF”表示下一行,即“\n”</span><br><span class="line">Mac系统中采用“回车符,CR”表示下一行,即“\r”</span><br></pre></td></tr></table></figure>
+
+
+
+<p>快捷键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">行复制 ctrl+l</span><br><span class="line">行删除 ctrl+e</span><br><span class="line">ctrl = 唱 跳 rap 篮球 (蔡徐坤的梗...别在意)</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -229,7 +266,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/RESUME/" rel="tag"># RESUME</a>
+              <a href="/tags/%E5%BF%83%E5%BE%97/" rel="tag"># 心得</a>
+              <a href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag"># 杂项</a>
           </div>
 
         
@@ -238,13 +276,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/12/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A01/" rel="prev" title="Java基础编程思想复习1">
-      <i class="fa fa-chevron-left"></i> Java基础编程思想复习1
+    <a href="/2021/07/07/%E7%A7%8B%E6%A1%9C-%E6%9F%B4%E7%94%B0%E6%B7%B3/" rel="prev" title="秋桜-柴田淳">
+      <i class="fa fa-chevron-left"></i> 秋桜-柴田淳
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/05/18/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A02/" rel="next" title="Java基础编程思想复习2">
-      Java基础编程思想复习2 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -303,6 +338,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">SakuraEditor中的正则表达式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
