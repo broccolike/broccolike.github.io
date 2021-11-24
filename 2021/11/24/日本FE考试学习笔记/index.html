@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Java基础编程思想复习1   知识回顾  面向对象: 在代码层面, 类中有且仅有5种成分.  成员变量  成员方法  构造器 ( 类中默认自带一个无参构造器, 即使不写它也是存在的, 如果它写了一个构造器, 那么无参构造器就被覆盖了)  代码块  内部类   只要不是以上五种成分, 就必定报错. this关键字: this关键字代表当前对象的引用, 可以在构造器和实例方法中使用. this在方法">
+  <meta name="description" content="先说心得  这考试的命名绝对有问题, “基本情报技术者”, 明明叫“基本”, 可内容尼玛一点也不基本!  对于一个文科生而言, 难点我总结了一下:  进制换算和线性代数相关问题, 练吧, 必考, 之前欠下的数学老师的债迟早是要还的. CPU基本构造和内存基本原理, 一级缓存, 二级缓存,  栈, 堆, 静态这些基本概念不明白的话可能会很难哦…身为硬件发烧友+Java开发者的我似乎没什么难度 逻辑换">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java基础编程思想复习1">
-<meta property="og:url" content="http://example.com/2021/05/12/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A01/index.html">
+<meta property="og:title" content="日本FE考试学习笔记">
+<meta property="og:url" content="http://example.com/2021/11/24/%E6%97%A5%E6%9C%ACFE%E8%80%83%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="ZM-blogs">
-<meta property="og:description" content="Java基础编程思想复习1   知识回顾  面向对象: 在代码层面, 类中有且仅有5种成分.  成员变量  成员方法  构造器 ( 类中默认自带一个无参构造器, 即使不写它也是存在的, 如果它写了一个构造器, 那么无参构造器就被覆盖了)  代码块  内部类   只要不是以上五种成分, 就必定报错. this关键字: this关键字代表当前对象的引用, 可以在构造器和实例方法中使用. this在方法">
+<meta property="og:description" content="先说心得  这考试的命名绝对有问题, “基本情报技术者”, 明明叫“基本”, 可内容尼玛一点也不基本!  对于一个文科生而言, 难点我总结了一下:  进制换算和线性代数相关问题, 练吧, 必考, 之前欠下的数学老师的债迟早是要还的. CPU基本构造和内存基本原理, 一级缓存, 二级缓存,  栈, 堆, 静态这些基本概念不明白的话可能会很难哦…身为硬件发烧友+Java开发者的我似乎没什么难度 逻辑换">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-11T16:29:05.000Z">
-<meta property="article:modified_time" content="2021-05-18T07:02:23.788Z">
+<meta property="article:published_time" content="2021-11-23T15:59:51.000Z">
+<meta property="article:modified_time" content="2021-11-24T13:30:15.688Z">
 <meta property="article:author" content="ZM">
-<meta property="article:tag" content="基础">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="基本情报">
+<meta property="article:tag" content="心得体会">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/05/12/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A01/">
+<link rel="canonical" href="http://example.com/2021/11/24/%E6%97%A5%E6%9C%ACFE%E8%80%83%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>Java基础编程思想复习1 | ZM-blogs</title>
+  <title>日本FE考试学习笔记 | ZM-blogs</title>
   
 
 
@@ -172,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/12/Java%E5%9F%BA%E7%A1%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E5%A4%8D%E4%B9%A01/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/24/%E6%97%A5%E6%9C%ACFE%E8%80%83%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -185,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Java基础编程思想复习1
+          日本FE考试学习笔记
         </h1>
 
         <div class="post-meta">
@@ -194,31 +194,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-05-12 01:29:05" itemprop="dateCreated datePublished" datetime="2021-05-12T01:29:05+09:00">2021-05-12</time>
+              <time title="创建时间：2021-11-24 00:59:51 / 修改时间：22:30:15" itemprop="dateCreated datePublished" datetime="2021-11-24T00:59:51+09:00">2021-11-24</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-18 16:02:23" itemprop="dateModified" datetime="2021-05-18T16:02:23+09:00">2021-05-18</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/%E5%9F%BA%E7%A1%80/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/" itemprop="url" rel="index"><span itemprop="name">编程思想</span></a>
+                  <a href="/categories/%E8%B5%84%E6%A0%BC%E8%80%83%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">资格考试</span></a>
                 </span>
             </span>
 
@@ -233,118 +219,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2>Java基础编程思想复习1</h2>
+        <h3>先说心得</h3>
 
+<p>这考试的命名绝对有问题, “基本情报技术者”, 明明叫“基本”, 可内容尼玛一点也不基本! </p>
+<p>对于一个文科生而言, 难点我总结了一下:</p>
 <ul>
-<li><p>知识回顾</p>
-<ul>
-<li><p>面向对象:</p>
-<p>在代码层面, 类中有且仅有5种成分.</p>
-<ul>
-<li><p>成员变量</p>
-</li>
-<li><p>成员方法</p>
-</li>
-<li><p>构造器</p>
-<p>( 类中默认自带一个无参构造器, 即使不写它也是存在的, 如果它写了一个构造器, 那么无参构造器就被覆盖了)</p>
-</li>
-<li><p>代码块</p>
-</li>
-<li><p>内部类</p>
-</li>
+<li>进制换算和线性代数相关问题, 练吧, 必考, 之前欠下的数学老师的债迟早是要还的.</li>
+<li>CPU基本构造和内存基本原理, 一级缓存, 二级缓存,  栈, 堆, 静态这些基本概念不明白的话可能会很难哦…身为硬件发烧友+Java开发者的我似乎没什么难度</li>
+<li>逻辑换算. 相当多的内容, AND, OR, NOT, XOR, NAND, NOR, 半加算器, 全加算器…一定要捋明白, 因为下午的考试也有可能出这部分内容, 如果掌握好, 相当拿分.</li>
+<li>网络基础, OSI的7层架构模型, 以及各个分层中的协议, 设备. 刚好上个现场在研究TCP协议, http协议和socket通信编程, 哇哈哈, 简直天助我也. TCP的3次握手和4次挥手这种难度是不会考到的, 放心吧. ACK, SYN, FIN啥来着?我也记不清了…</li>
+<li>文件管理, 相对路径和绝对路径, 如果这都不明白, 那么这个行业可能不适合你…</li>
+<li>数据库基础, 嗯…下午也会考, 虽然很重要, 但是CRUD会写的话应该属于送分题…</li>
+<li>网络安全, 重中之重. 虽然不难, 但是上午和下午都要考, 而且下午还是必考内容, 各种加密协议一定熟记于心. 我考试当天中午还在便利店记忆这部分内容, 结果下午就考到了原题! 卧槽, 直接100%正确率, 还节省了大把时间给算法.</li>
+<li>系统开发手法, 又是上个现场! 刚刚做过敏捷开发, SCRUM, 当时专门看过敏捷和传统瀑布流的区别, 所以学习上并没有花费什么时间. 但是开发时间计划的计算方法一定要学明白…</li>
+<li>算法, 也是重中之重, 跟逻辑换算, 网络安全一样属于占比很高的必考内容, 什么二叉树, 数组, 容器, 队列, 冒泡排序, 折腾去吧您呢! 还有UML和面向对象的部分内容, 如果Java基础学的好的话, 应该50%以上正确率问题不大</li>
+<li>日语阅读理解: 你没看错, 我把剩下的内容总结为日语阅读理解…什么企业经营战略, 什么利润成本计算, 博弈论, PDCA, IT相关法律法规…我很讨厌做这部分题, 而且下午的内容我也没选它, 我宁愿去做数学题! </li>
 </ul>
-<p>只要不是以上五种成分, 就必定报错.</p>
-<p>this关键字: this关键字代表当前对象的引用, 可以在构造器和实例方法中使用. this在方法中时, 谁调用这个方法, this就代表谁, 在构造器中, this代表了当前正在初始化的对象的引用. </p>
-</li>
-</ul>
-</li>
-<li><p>static关键字</p>
-<p>有static修饰的变量或方法属于类本身, 变量与类一起加载一次, 可以通过类名直接调用.<br>无static修饰的变量或方法属于类的每个对象, 叫做实例变量或实例方法, 有多少个对象, 变量就加载多少次, 必须通过类的对象调用. <br>实例可以访问静态变量或方法, 静态可以访问静态变量或方法, 静态不可以访问实例变量或方法.</p>
-</li>
-<li><p>继承: </p>
-<p>继承的作用: </p>
-<ul>
-<li>继承可以提高代码的复用性, 相同代码向上抽取到父类. </li>
-<li>子类直接继承父类, 可以得到父类的方法, 还可以定义子类特有方法, 通常子类更强大</li>
-</ul>
-<p>通常情况下, 若几个类有相同的功能或方法, 那么就把他们向上抽取到父类中, 重复利用.</p>
-<p>注意:</p>
-<ul>
-<li>子类不能继承父类的构造器, 子类有自己的构造器</li>
-<li>子类是否可以继承父类的私有成员变量或方法? 可以, 但无法直接访问.</li>
-<li>子类是否可以得到父类的静态成员? 不可以, 但可以共享访问.</li>
-</ul>
-<p>继承后成员变量的访问特点:</p>
-<ul>
-<li>就近原则: 子类有就找子类, 子类没有就找父类, 再没有就报错</li>
-<li>this代表当前对象的引用, super代表了父类对象的引用</li>
-</ul>
-<p>继承后方法的重写: </p>
-<ul>
-<li>子类继承父类方法, 但无法满足业务需求, 需要重写方法内容进行覆盖</li>
-<li>方法重写时需要加上@Override注解: 可读性好，安全，优雅</li>
-</ul>
-<p>方法重写的要求: </p>
-<ul>
-<li>方法名称和形参列表必须与父类方法保持一致</li>
-<li>返回值类型要么与父类保持一致, 要么范围比父类更小</li>
-<li>权限修饰符应该与父类相同或者比父类更大</li>
-<li>抛出的异常应该与父类一致或范围更小</li>
-<li>总体建议: 加上@Override注解, “申明不变, 重新实现”, 私有方法不能被重写.</li>
-</ul>
-<p>继承后构造器的特点: </p>
-<ul>
-<li><p>子类的构造器第一行默认访问父类的无参构造器, 再执行自己的构造器</p>
-</li>
-<li><p>为什么:</p>
-<ul>
-<li><p>子类构造器默认第一行为super(); 调用父类午餐构造器, 写不写都存在</p>
-<p>( 如果父类中没有无参构造器, 编译也就会失败. )</p>
-</li>
-<li><p>子类继承父类就得到了父类的属性和行为. 调用子类构造器初始化子类对象的时候, 必须先调用父类构造器初始化父类的属性和行为. 正所谓先有爹后有儿. </p>
-</li>
-</ul>
-</li>
-</ul>
-<p>继承后super调用父类构造器:</p>
-<ul>
-<li><p>具体场景: 可以在子类构造器中通过super(…);依据参数调用父类构造器, 以便调用父类构造器初始化继承自父类的数据.</p>
-</li>
-<li><pre><code class="java">class Monkey extends Animal&#123;
-    public Monkey(String name , int age , char sex) &#123;
-        super(name, age, sex);
-    &#125;
-
-    public void eatBanana()&#123;
-        System.out.println(getName() + &quot;--&gt;&quot; + getAge() + &quot;--&gt;&quot; + getSex() + &quot;在吃香蕉&quot;);
-    &#125;
-&#125;
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p>this和super关键字的使用:</p>
-<ul>
-<li>this(…): 可以用来接用本类其他构造器</li>
-<li>super(…): 调用父类构造器</li>
-</ul>
-</li>
-<li><p>继承的特点总结: </p>
-<ul>
-<li><p>单继承：一个类只能继承一个直接父类。</p>
-</li>
-<li><p>为什么Java是单继承？</p>
-<p>答：反证法，假如C继承A和B，若AB中有同名方法，C调用就懵逼了</p>
-</li>
-<li><p>多层继承：一个类可以间接继承多个父类。（家谱）</p>
-</li>
-<li><p>一个类可以有多个子类</p>
-</li>
-<li><p>一个类要么默认继承了Object类，要么间接继承了Object类，祖宗类。</p>
-</li>
-</ul>
-</li>
-</ul>
+<p>说完全没学肯定是假的, 这考试如果没有一定的学习时间的话, 还是很难通过的. 虽然我也就是临时抱佛脚两个星期…</p>
+<p>上午部分: 掌握好上面部分, 而且只要是历年真题能做到80%正确率肯定没问题. 我只能做到70%左右…但是上午还是67%有惊无险的通过了.该死的山手线, 考试当天早上掉链子! 一大早车门点检, 直接停车不走了! 还好劳资及时换了metro, 上午考试状态严重受到影响! </p>
+<p>下午部分: 网络安全和SQL和问题一定尽量多的拿分! 因为算法和Java部分并不简单! Java的题目里面不要只看函数的命名就去想当然的认为计算结果应该是什么, 时间充裕的情况下, 还是展开进行演算. 其最大的难度在于, 你习惯了eclipse或者IDEA里面的方法跳来跳去, 忽然代码给你写到纸面上, 直接懵逼! lambda表达式基本属于Java里的必考题, 然鹅, 我并不会, 遇到lambda就直接放弃. 如果你说你选表计算, 那我无fuck说.</p>
+<p>现场小姐姐说情報セキュリティ的考试也有签证加分, 于是乎, 我顺手也报了. 然后我发现…这考试可能比基本情报要难一点, 为什么呢? 因为下午几乎全是我最讨厌的“日语阅读理解”系列题目, 长篇大论, 而且还是必答. 祈祷下个月不要睡着吧, 考多少不重要了…</p>
+<p>买了本书, 准备明年4月份试一下应用情报技术者, 看了一眼确实难度上升了, 为什么呢? 还是因为阅读理解…</p>
 
     </div>
 
@@ -354,8 +249,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag"># 基础</a>
-              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/%E5%9F%BA%E6%9C%AC%E6%83%85%E6%8A%A5/" rel="tag"># 基本情报</a>
+              <a href="/tags/%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/" rel="tag"># 心得体会</a>
           </div>
 
         
@@ -364,13 +259,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" rel="prev" title="SpringIntegration-学习笔记1">
-      <i class="fa fa-chevron-left"></i> SpringIntegration-学习笔记1
+    <a href="/2021/09/15/SakuraEditor%E4%B8%AD%E7%9A%84%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="SakuraEditor中的正则表达式">
+      <i class="fa fa-chevron-left"></i> SakuraEditor中的正则表达式
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/05/13/%E5%B1%A5%E6%AD%B4%E6%9B%B8/" rel="next" title="履歴書">
-      履歴書 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -429,7 +321,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Java基础编程思想复习1</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">先说心得</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
