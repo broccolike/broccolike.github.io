@@ -165,6 +165,230 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZM-blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/11/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="post-title-link" itemprop="url">Python学习笔记1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-11 22:53:33" itemprop="dateCreated datePublished" datetime="2022-01-11T22:53:33+09:00">2022-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-13 00:42:29" itemprop="dateModified" datetime="2022-01-13T00:42:29+09:00">2022-01-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>从这篇博客开始, 写这玩意儿就开始花钱了. 为啥呢? 因为Typora收费了! 你敢信? Typora收费了! 这年头, 真是啥玩意儿都涨价. 算了算了, 白嫖那么久了, 1980日元我认了…</p>
+<p>离职的事情就不提了, 八百多个不愉快, 让公司个别营业气个半死. 咋说呢? 哎, 还是多亏部长, 部长就是部长, 做事还是讲究, 和和气气离开我也就知足了.</p>
+<p>据说接下来要用到Python, 不如提前看一眼?于是乎, 又来到了我的“代码大学”—哔哩哔哩, 嗯, 梦开始的地方. 嗬, 不搜不知道, 在b站搜索栏输入“p”, 第一个选项就是python, 可见墙内学习热度很高嘛! 打开了几个看了一眼, 整个学下来要100多个小时, 过于基础的东西花费的时间太多, 毕竟是面向零基础的更多, 从操作系统, 整数, 浮点数, 转义符这些东西开始讲起, 感觉这么搞的话效率不高啊.</p>
+<p>于是, 我找了一套相对简洁的视频, 然后开2倍速播放, 准备把与Java对比有所不同的地方以笔记的方式记录下来, 至于环境配置, 变量原理就通通省去, 算是留作快速入门的学习内容.</p>
+<ul>
+<li><p>语言基础: 与Java有所不同, Python不是依赖于编译器的语言, 而是与C, Ruby一样是基于解释器的语言, 也是一种动态语言.</p>
+</li>
+<li><p>标识符: </p>
+<ul>
+<li>可以是字母, 数字, 下划线, 且第一个字符不能是数字</li>
+<li>严格区分大小写</li>
+<li>下划线开头的标识符在python中有特殊含义, 一般情况下应该避免使用相似标识符</li>
+</ul>
+</li>
+<li><p>标识符的命名规则</p>
+<ul>
+<li><p>模块(py文件)名称尽量短小, 并尽量使用小写字母, 可以使用下划线分隔多个字符. (与Java文件首字母大写不同不同)</p>
+</li>
+<li><p>包名(package)尽量短小, 并尽量使用小写字母, 不推荐使用下划线分隔, 可以使用.进行分隔. </p>
+</li>
+<li><p>类名首字母大写(同Java)</p>
+</li>
+<li><p>模块内部类使用下划线开头, 例如<code>_InnerMyClass</code>这种写法</p>
+</li>
+<li><p>函数, 类的属性和方法全部使用小写字母, 多个单词之间可以使用下划线进行分隔</p>
+</li>
+<li><p>例如以下文件命名为<code>my_python_main.py</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="comment"># 类的定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">_InnerMyClass</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 注意: python的类和函数中严格使用缩进去控制代码结构</span></span><br><span class="line"><span class="comment"># 函数的定义</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun_name</span>():</span></span><br><span class="line">		<span class="keyword">pass</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>标识符的特殊注意事项 (暂时还没摸到实际例子)</p>
+</li>
+<li><ul>
+<li>使用单下划线”_”开头的模块变量或函数是受保护的, 在使用from xxx import *语句导入的时候, 这些模块变量和函数是不能被导入的</li>
+<li>使用双下划线”__”开头的实例变量或方法是这个类私有的</li>
+<li>以双下划线”__”开头和结尾是python的专用标识, 例如<code>__init__()</code>代表初始化函数.</li>
+</ul>
+</li>
+<li><p>变量: </p>
+<ul>
+<li><p>在定义变量时, 不需要声明变量数据类型</p>
+</li>
+<li><p>必须是一个有效的标识符 (不能以数字和下划线开头)</p>
+</li>
+<li><p>不能使用python中的保留字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="comment"># 判断字符串是否存在于python的保留字中.(True/False首字母为大写)</span></span><br><span class="line"><span class="keyword">import</span> keyword</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;class&#x27;</span> <span class="keyword">in</span> keyword.kwlist)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="comment"># 字符串单引号双引号都可以</span></span><br><span class="line">name = <span class="string">&#x27;Jahmilli&#x27;</span></span><br><span class="line"><span class="comment"># class为保留字,不可用</span></span><br><span class="line">cls = <span class="string">&#x27;Mage&#x27;</span></span><br><span class="line">level = <span class="number">60.0</span></span><br><span class="line">pvpPlayer = <span class="literal">True</span></span><br><span class="line">skill_1 = <span class="string">&#x27;DeepFrost&#x27;</span></span><br><span class="line"><span class="comment"># python允许连续赋值</span></span><br><span class="line">skill_2 = skill_3 = <span class="string">&#x27;\&#x27;biu\&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># python中的字符串使用逗号连接, 逗号连接变量时输出结果默认为空格进行分隔</span></span><br><span class="line"><span class="comment"># print函数默认带有参数end,默认值为换行符, 参数sep,默认值为半角空格, 可以通过给他们赋值改变结尾符和分隔符</span></span><br><span class="line"><span class="comment"># 例: print(172,0,0,1,sep=&#x27;.&#x27;,end&#x27;~~~~~&#x27;)</span></span><br><span class="line"><span class="built_in">print</span>(name, <span class="string">&#x27;is a lvl&#x27;</span>, level, cls)</span><br><span class="line"><span class="built_in">print</span>(name + <span class="string">&#x27; likes to use combo &#x27;</span>+ skill_1, skill_2*<span class="number">3</span>)</span><br><span class="line"><span class="comment"># 也可以与Java一样, 使用+号连接, 但下面这种数据类型不同的情况下, 无法使用加号连接</span></span><br><span class="line"><span class="comment"># 因此推荐使用逗号进行连接</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;In TBC version level limit will be&#x27;</span>, level + <span class="number">10</span>)</span><br><span class="line"><span class="comment"># python可以通过内置函数type(变量名)查看改变量的数据类型</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(name))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(pvpPlayer))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(level))</span><br><span class="line"><span class="comment"># python可以通过内置函数id(变量名)查看改变量在内存中的地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(skill_2))</span><br><span class="line"><span class="comment"># 地址值与Java类似,可以直接通过==进行比较</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(skill_2) == <span class="built_in">id</span>(skill_3))</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;输出结果为 </span></span><br><span class="line"><span class="string">Jahmilli is a lvl 60.0 Mage</span></span><br><span class="line"><span class="string">Jahmilli likes to use combo DeepFrost &#x27;biu&#x27;&#x27;biu&#x27;&#x27;biu&#x27;</span></span><br><span class="line"><span class="string">In TBC version level limit will be 70.0</span></span><br><span class="line"><span class="string">&lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line"><span class="string">&lt;class &#x27;bool&#x27;&gt;</span></span><br><span class="line"><span class="string">&lt;class &#x27;float&#x27;&gt;</span></span><br><span class="line"><span class="string">4332088752</span></span><br><span class="line"><span class="string">True</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>常量</p>
+<ul>
+<li><p>python中没有定义常量的保留字</p>
+</li>
+<li><p>常量命名规则与Java类似, 由大写字母和下划线组成</p>
+</li>
+<li><p>常量赋值后, 后续仍然可以被修改. 并不存在像Java中的final关键字.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line">PI = <span class="number">3.141592653</span></span><br><span class="line">PI = <span class="number">99</span></span><br><span class="line"><span class="built_in">print</span>(PI)</span><br><span class="line"><span class="comment"># 输出结果为99</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>数据类型</p>
+<ul>
+<li><p>整数类型</p>
+<ul>
+<li><p>python中的整数类型为不可变数据类型</p>
+</li>
+<li><p>理论上的取值范围是从[正无穷,负无穷]</p>
+</li>
+<li><p>可以使用二进制, 八进制, 十六进制直接给变量赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line">num = <span class="number">123</span> <span class="comment"># 正常十进制数字赋值</span></span><br><span class="line">num1 = <span class="number">0b01010110</span> <span class="comment"># 使用二进制直接赋值</span></span><br><span class="line">num2 = <span class="number">0o765</span> <span class="comment"># 使用八进制</span></span><br><span class="line">num3 = <span class="number">0x4EFA</span> <span class="comment"># 使用十六进制</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(num))</span><br><span class="line"><span class="built_in">print</span>(num)</span><br><span class="line"><span class="built_in">print</span>(num1)</span><br><span class="line"><span class="built_in">print</span>(num2)</span><br><span class="line"><span class="built_in">print</span>(num3)</span><br><span class="line"><span class="comment"># 输出结果为&lt;class &#x27;int&#x27;&gt;, 123, 86. 501, 20218</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>浮点数类型</p>
+<ul>
+<li><p>可以使用带e的科学计数法, 不可变数据类型</p>
+</li>
+<li><p>必须带有小数部分, 小数部分可以为0</p>
+</li>
+<li><p>有一定概率在计算后, 带有不确定的尾数</p>
+</li>
+<li><p>可以使用内置函数round()限定运算结果需要保留的小数位数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">0.1</span> + <span class="number">0.2</span>) <span class="comment"># 0.30000000000000004</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">round</span>(<span class="number">0.1</span> + <span class="number">0.2</span>,<span class="number">1</span>)) <span class="comment"># 0.3</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>复数类型 ( 科学计算以外很少用到 )</p>
+<ul>
+<li><p>复数由实部和虚部组成, 不可变数据类型</p>
+</li>
+<li><p>.real获取实数部分, .imag获取虚数部分</p>
+</li>
+<li><p>j为复数的一个基本单位, 被定义为j=根下-1, 称为虚数单位</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line">x=<span class="number">123</span>+<span class="number">456j</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;实数部分为&quot;</span>,x.real) <span class="comment"># 实数部分为 123.0</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;虚数部分为&quot;</span>,x.imag) <span class="comment"># 虚数部分为 456.0</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>字符串</p>
+<ul>
+<li><p>不可变数据类型, 即不可变字符序列</p>
+</li>
+<li><p>单行字符串’str’或”str”</p>
+</li>
+<li><p>多行字符串’’’str’’’或”””str”””</p>
+</li>
+<li><p>转义符<code>\</code>对特殊符号进行转义</p>
+</li>
+<li><p>在字符串界定符前加上r或R, 可以使转义符失效, 直接输出字符串. 我X这可比Java舒服太多了?</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;北京\n不\n欢迎你&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">r&#x27;北京\n不\n欢迎你&#x27;</span>) <span class="comment"># 这种写法也称为原字符</span></span><br></pre></td></tr></table></figure></li>
+<li><p>字符串索引, 正向索引从0开始, 反向索引最后一位为-1</p>
+</li>
+<li><p>subString的写法: str[M:N] , 与Java相同, [M,N) 的取值范围. M不写的时候默认为0, N默认直接到结尾. 方向均为字符串从左向右.</p>
+</li>
+<li><p>加号可以连接字符串, 但更推荐逗号连接, 因为不同数据类型会报错. 星号可以复制多次字符串. in可以判断是否在字符串中, 返回值为boolean. 也比Java舒服太多了, Java的contains只能判断char是否在String中, string要使用indexOf(str)的返回值非-1来判断是否含有字符串.</p>
+</li>
+</ul>
+</li>
+<li><p>布尔类型</p>
+<ul>
+<li><p>可以转换为数值True为1, False为0. 首字母大写</p>
+</li>
+<li><p>所有对象都有一个布尔值, 使用bool()进行测试</p>
+</li>
+<li><p>布尔值为假的情况</p>
+<ul>
+<li><p>False或者None</p>
+</li>
+<li><p>数值中的0, 包含0, 0.0, 虚数0</p>
+</li>
+<li><p>空序列, 包含空字符串, 空元组, 空列表, 空字典 ( 咦? 这个会不会很好用? )</p>
+</li>
+<li><p>自定义对象的实例, 该对象的<code>__bool__()</code>方法返回False或者<code>__len__()</code>方法返回0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bool</span>(<span class="number">18</span>)) <span class="comment"># True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bool</span>(<span class="number">0</span>),<span class="built_in">bool</span>(<span class="number">0.0</span>)) <span class="comment"># False False</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bool</span>(<span class="string">&#x27;Jahmilli&#x27;</span>)) <span class="comment"># True</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bool</span>()) <span class="comment"># False</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据类型转换</p>
+<ul>
+<li><p>隐性数据类型转换: 如int类型与float类型进行运算时, 结果自动转换为float类型</p>
+</li>
+<li><p>显性数据类型转换: 类似Java中的强转, int(变量名)这种玩法.但python的转换方法比起Java简单易用很多很多</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">int</span>(<span class="string">&#x27;9&#x27;</span>)) <span class="comment"># 9</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">int</span>(<span class="number">9.9</span>)) <span class="comment"># 9</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>(<span class="number">9</span>)) <span class="comment"># 9</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>(<span class="number">9.9</span>)) <span class="comment"># 9.9</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">float</span>(<span class="number">9</span>)) <span class="comment"># 9.0</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">float</span>(<span class="string">&#x27;9.9&#x27;</span>)) <span class="comment"># 9.9</span></span><br><span class="line"><span class="comment"># 以上数据乱转会报错</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>)) <span class="comment"># 97 获取当前字符的字符编码</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">chr</span>(<span class="number">97</span>)) <span class="comment"># a 将字符编码转换为字符</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 十进制数字可以与其他进制进行转化</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bin</span>(<span class="number">20</span>)) <span class="comment"># 0b10100</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">oct</span>(<span class="number">20</span>)) <span class="comment"># 0o24</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(<span class="number">20</span>)) <span class="comment"># 0x14</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/24/%E6%97%A5%E6%9C%ACFE%E8%80%83%E8%AF%95%E4%BD%93%E4%BC%9A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1259,78 +1483,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/10/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-10 15:47:06" itemprop="dateCreated datePublished" datetime="2021-05-10T15:47:06+09:00">2021-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1395,20 +1552,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1435,7 +1592,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
