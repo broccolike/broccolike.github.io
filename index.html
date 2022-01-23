@@ -165,6 +165,225 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/23/SHELL%E8%84%9A%E6%9C%AC%E5%BF%83%E5%BE%972/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZM-blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/23/SHELL%E8%84%9A%E6%9C%AC%E5%BF%83%E5%BE%972/" class="post-title-link" itemprop="url">SHELL脚本心得2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-23 20:27:07 / 修改时间：20:56:13" itemprop="dateCreated datePublished" datetime="2022-01-23T20:27:07+09:00">2022-01-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SHELL/" itemprop="url" rel="index"><span itemprop="name">SHELL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2>SHELL脚本心得2</h2>
+
+<p>最近接触了一下AWS, 而且好像今后要用到AWS-CLI, 所以最近也尝试对EC2进行了一点点操作. 具体问题如下:</p>
+<ul>
+<li>每次通过AWS的WEB控制台启动EC2, 停止EC2, 太麻烦.</li>
+<li>每次的公网IP地址是不停变更的, 每次都去copy, 太麻烦.</li>
+<li>想尝试使用命令行模式实现一下对实例的控制.</li>
+</ul>
+<p>于是如下脚本诞生了</p>
+<ul>
+<li><p>首先是子脚本, 通过此脚本控制EC2实例的启动和停止, 并返回exit返回值.</p>
+</li>
+<li><p>逻辑: 查看实例的状态, 获取返回值字符串, 进行分析. </p>
+<ul>
+<li>如果实例是停止状态, 就执行启动实例, 并等待它初始化完成.返回exit0</li>
+<li>如果实例是开启状态, 就执行停止实例, 并等待停止完成.返回exit1</li>
+<li>如果是其他状态, 返回exit10</li>
+<li>instance-id 使用 <code>01abc01abc01abcd</code>进行了替换</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">####################################################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#处理简介:此为同目录下AWS简易连接脚本的子脚本</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">版本:0.1</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#主要用于处理AWS-CLI提供的EC2实例的启停命令及其返回的JSON</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment"># 1.实例停止状态下执行此脚本会自动开启实例,并等待初始化</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2.启动状态下执行此脚本会自动停止实例,并确认状态返回</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">####################################################</span></span></span><br><span class="line"></span><br><span class="line">STS_JSON=`aws ec2 describe-instance-status --instance-id i-01abc01abc01abcd`</span><br><span class="line"></span><br><span class="line">STS_STR_1=\&quot;Status\&quot;\:\ \&quot;passed\&quot;</span><br><span class="line"></span><br><span class="line">STS_STR_2=\&quot;Status\&quot;\:\ \&quot;ok\&quot;</span><br><span class="line"></span><br><span class="line">STS_STOP=\&quot;InstanceStatuses\&quot;\:\ </span><br><span class="line"></span><br><span class="line">STS_INTI=\&quot;Status\&quot;\:\ \&quot;initializing\&quot;</span><br><span class="line"></span><br><span class="line">CMD_START=&quot;aws ec2 start-instances --instance-ids i-01abc01abc01abcd&quot;</span><br><span class="line"></span><br><span class="line">CMD_STOP=&quot;aws ec2 stop-instances --instance-ids i-01abc01abc01abcd&quot;</span><br><span class="line"></span><br><span class="line">CMD_STS=&quot;aws ec2 describe-instance-status --instance-id i-01abc01abc01abcd&quot;</span><br><span class="line"></span><br><span class="line">RESULT_STOP=$(echo $STS_JSON | grep &quot;$&#123;STS_STOP&#125;[[][]]&quot;)</span><br><span class="line">if [[ &quot;$RESULT_STOP&quot; != &quot;&quot; ]]</span><br><span class="line">then</span><br><span class="line">  echo &quot;The EC2 status is STOPPED. Now trying to START.&quot;</span><br><span class="line">  echo $CMD_START</span><br><span class="line"><span class="meta">  $</span><span class="bash">CMD_START</span></span><br><span class="line">  echo &quot;STARTING...Trying to confirm status after 60s&quot;</span><br><span class="line">  /bin/sleep 20</span><br><span class="line">  echo &quot;STARTING...Trying to confirm status after 40s&quot;</span><br><span class="line">  /bin/sleep 20</span><br><span class="line">  echo &quot;STARTING...Trying to confirm status after 20s&quot;</span><br><span class="line">  /bin/sleep 20</span><br><span class="line">  echo &quot;Now confirming status&quot;</span><br><span class="line">  STS_JSON=`aws ec2 describe-instance-status --instance-id i-01abc01abc01abcd`</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [[ $STS_JSON == *$STS_INTI*$STS_INTI*$STS_INTI* ]]</span><br><span class="line">then</span><br><span class="line">  echo &quot;The EC2 status is INTIALIZING...Please WAIT...Trying to confirm again after 20s&quot;</span><br><span class="line">  RESULT_INTI=&quot;temp&quot;</span><br><span class="line">  while [[ &quot;$RESULT_INTI&quot; != &quot;&quot; ]];do</span><br><span class="line">    /bin/sleep 20</span><br><span class="line">    STS_JSON=`aws ec2 describe-instance-status --instance-id i-01abc01abc01abcd`</span><br><span class="line">    RESULT_INTI=$(echo $STS_JSON | grep &quot;$&#123;STS_INTI&#125;&quot;)</span><br><span class="line">    echo &quot;NOW INTIALIZING...Trying to confirm again after 20s&quot;</span><br><span class="line">  done</span><br><span class="line">  echo `aws ec2 describe-instance-status --instance-id i-01abc01abc01abcd`</span><br><span class="line">  echo &quot;EC2 Instance has started SUCCESSFULLY&quot;</span><br><span class="line">  exit 0</span><br><span class="line">elif [[ $STS_JSON == *$STS_STR_1*$STS_STR_1*$STS_STR_2* ]]</span><br><span class="line">then</span><br><span class="line">  echo &quot;The EC2 status is RUNNING. Now trying to STOP.&quot;</span><br><span class="line"><span class="meta">  $</span><span class="bash">CMD_STOP</span></span><br><span class="line">  echo $CMD_STOP</span><br><span class="line">  echo &quot;STOPPING...Confirm status after 30s&quot;</span><br><span class="line">  /bin/sleep 10</span><br><span class="line">  echo &quot;STOPPING...Confirm status after 20s&quot;</span><br><span class="line">  /bin/sleep 10</span><br><span class="line">  echo &quot;STOPPING...Confirm status after 10s&quot;</span><br><span class="line">  /bin/sleep 10</span><br><span class="line">  echo &quot;Now confirming status&quot;</span><br><span class="line">  echo `aws ec2 describe-instance-status --instance-id i-01abc01abc01abcd`</span><br><span class="line">  exit 1</span><br><span class="line">else</span><br><span class="line">  echo &quot;STATUS ERROR.Please confirm via AWS web console.&quot;</span><br><span class="line">  exit 10</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>接下来是调用上面脚本的脚本</p>
+<ul>
+<li>逻辑: 子脚本返回0的时候, 使用ssh使用本地的key-pair文件连接实例</li>
+<li><code>PEM_PATH</code>已经替换</li>
+<li><code>Name=tag:Name,Values=YOUR_INSTANCE_NAME</code>中的值已经替换掉</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">===============================================================</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#处理内容：用于简单连接AWS EC2</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">版本:0.1</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#简介:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">  1.不需要打开AWS web控制台.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">  2.不需要手动获取EC2实例的DNS名称</span></span><br><span class="line"><span class="meta">#</span><span class="bash">  3.全程只需要ssh连接确认时手动输入一个yes</span></span><br><span class="line"><span class="meta">#</span><span class="bash">  4.一部分参数还未进行解耦</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="bash"><span class="comment">#===============================================================</span></span></span><br><span class="line"></span><br><span class="line">PARAMS=&quot;Please confirm your PUBLIC DNS NAME&quot;</span><br><span class="line"></span><br><span class="line">PEM_PATH=/Users/yourname/.ssh/your-key-pair.pem</span><br><span class="line"></span><br><span class="line">ADD=$&#123;PARAMS#*@&#125;</span><br><span class="line"></span><br><span class="line">./start_stop.sh</span><br><span class="line"></span><br><span class="line">if [ $? -eq 0 ]</span><br><span class="line">then</span><br><span class="line">  PARAMS=`aws ec2 describe-instances --filter &quot;Name=tag:Name,Values=YOUR_INSTANCE_NAME&quot; | sed &#x27;s/,/\n/g&#x27; | grep &quot;PublicDnsName&quot; | sed &#x27;s/ //g&#x27; | sort -u | sed &#x27;s/\&quot;//g&#x27; | sed &#x27;s/:/\n/g&#x27; | sed &#x27;1d&#x27; `</span><br><span class="line">  ADD=$&#123;PARAMS#*@&#125;</span><br><span class="line">  CON_CMD=&quot;ssh -i $PEM_PATH ec2-user@$ADD&quot;</span><br><span class="line">  echo &quot;Trying to connect to AWS EC2 via SSH&quot;</span><br><span class="line">  echo $CON_CMD</span><br><span class="line"><span class="meta">  $</span><span class="bash">CON_CMD</span></span><br><span class="line">elif [ $? -eq 1 ]</span><br><span class="line">then</span><br><span class="line">  echo &quot;EC2 STOPPED&quot;</span><br><span class="line">else</span><br><span class="line">  echo &quot;ERROR&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/13/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ZM">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZM-blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/13/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02/" class="post-title-link" itemprop="url">Python学习笔记2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-13 00:49:24" itemprop="dateCreated datePublished" datetime="2022-01-13T00:49:24+09:00">2022-01-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-15 02:22:29" itemprop="dateModified" datetime="2022-01-15T02:22:29+09:00">2022-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>接上篇, 上篇会不会太基础了? 但是不从变量等内容入手又有什么办法呢? 如果只是走马观花看一遍视频, 跟着敲一遍代码, 似乎也留不下什么, 就这么继续吧.</p>
+<ul>
+<li><p>eval()函数的使用</p>
+<ul>
+<li><p>eval(s)会去掉字符串s最外侧的一对括号, 并按照python语句的方式执行去掉括号字符串的内容</p>
+</li>
+<li><p>语法格式<code>变量=eval(字符串)</code></p>
+</li>
+<li><p>eval函数经常与input函数一起使用, 用来获取用户输入的数值型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line">s = <span class="string">&#x27;3.14+3&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(s,<span class="built_in">type</span>(s)) <span class="comment"># 3.14+3 &lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line">x = <span class="built_in">eval</span>(s)</span><br><span class="line"><span class="built_in">print</span>(x,<span class="built_in">type</span>(s)) <span class="comment"># 6.140000000000001 &lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># eval函数经常与input一起使用，用来获取用户输入的内容</span></span><br><span class="line">age = <span class="built_in">eval</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入您的年龄:&#x27;</span>)) <span class="comment"># 请输入您的年龄:&gt;? 18</span></span><br><span class="line"><span class="built_in">print</span>(age,<span class="built_in">type</span>(age)) <span class="comment"># 18 &lt;class &#x27;int&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line">height = <span class="built_in">eval</span>(<span class="built_in">input</span>(<span class="string">&#x27;情输入您的身高&#x27;</span>)) <span class="comment"># 情输入您的身高&gt;? 188.8</span></span><br><span class="line"><span class="built_in">print</span>(height,<span class="built_in">type</span>(height)) <span class="comment"># 188.8 &lt;class &#x27;float&#x27;&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># eval报错的情况</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">eval</span>(<span class="string">&#x27;hello&#x27;</span>))</span><br><span class="line"><span class="comment"># 报错内容；NameError: name &#x27;hello&#x27; is not defined</span></span><br><span class="line"><span class="comment"># 原因:eval的参数去掉引号后仅剩hello，此时被解析为一个变量名称，所以NameError</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>算数运算符</p>
+<ul>
+<li>幂运算 ** 并且拥有运算中的最高优先级</li>
+<li>整除 //</li>
+<li>注意: 除法运算会有数据类型的隐性转换, <code>round()</code>取一下位数比较好</li>
+</ul>
+</li>
+<li><p>赋值运算符</p>
+<ul>
+<li><code>x+=y</code>等赋值运算与Java基本相同, 即为<code>x=x+y</code></li>
+<li>还有<code>-= *= /= //= %= **=</code></li>
+<li>python支持连续赋值<code>a=b=c=100</code></li>
+<li>python支持系列解包赋值<code>a,b=10,20</code>.两个变量交换位置的话,Java需要进行异或运算, 或者借用第三个变量, 而python直接<code>b,a=a,b</code>即可.</li>
+</ul>
+</li>
+<li><p>比较运算符</p>
+<ul>
+<li>与Java基本相同, 返回boolean类型的值.</li>
+</ul>
+</li>
+<li><p>逻辑运算符</p>
+<ul>
+<li><p>写法与Java有点区别, 写作<code>and or not</code></p>
+</li>
+<li><p>需要注意, 因为不需要走编译器, 所以遇到以下代码的时候, 不会报错</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">8</span>&lt;<span class="number">7</span> <span class="keyword">and</span> <span class="number">10</span>/<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 8&lt;7为False, 之后进行and逻辑运算, 必定结果为False</span></span><br><span class="line"><span class="comment"># 因此, 10/0并不会进行计算, 也就不会报除零的错</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>位运算</p>
+<ul>
+<li>饶了我吧, 这段跳过吧, 考完基本情报之后我再也不想算这玩意儿了.</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/11/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -700,7 +919,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-15 00:50:07" itemprop="dateModified" datetime="2021-09-15T00:50:07+09:00">2021-09-15</time>
+                <time title="修改时间：2022-01-23 20:27:37" itemprop="dateModified" datetime="2022-01-23T20:27:37+09:00">2022-01-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1329,160 +1548,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/11/SpringIntegration-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="post-title-link" itemprop="url">SpringIntegration-学习笔记1</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-11 00:32:42" itemprop="dateCreated datePublished" datetime="2021-05-11T00:32:42+09:00">2021-05-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-12 01:31:13" itemprop="dateModified" datetime="2021-05-12T01:31:13+09:00">2021-05-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/Framework/" itemprop="url" rel="index"><span itemprop="name">Framework</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2>SpringIntegration学习笔记(1)</h2>
-
-<p>最近更换了工作现场, 内容也从业务开发变为了开发支援, 客户提供基于SpringIntegration的框架, 我们学习后为客户的项目提供AP基盘开发支援.</p>
-<p>本次的搭建项目是基于SpringIntegraion的REST和TCP通信, REST提供前端到中间AP的通信, 中间AP变换为JavaBean类型后再次变型为byte数组, 用于与后端的TCP通信.</p>
-<p>SpringIntegraion在DI上与SpringBoot基本相同, Bean可以通过xml或注解进行注入, 但相比SpringBoot多出了几个关键组件. 读了简书等几个博客上的文章, 结合项目中的见闻, 记录一下自己的学习内容.</p>
-<ul>
-<li>Message: 消息单元分为header和payload两部分, 在本次提供的框架中, 可以依据具体业务调整不同类型消息报文, 可以基于REST的Json, 也有基于TCP的byte数组.</li>
-<li>Message Channel: 负责连接消息处理的节点, 将Message从生产者传送给消费者. 根据消费者的多少可以分为point to point和publish-subscribe.根据消息的传输方式的不同, 区分为同步BIO和异步NIO. 本次参与的项目中, 以点对点的异步传输为主要方式.</li>
-<li>Message Endpoint: 消息处理节点, 消息从节点进入通道, 也从节点离开通道. 常见的有以下EndPoint: <ul>
-<li>Channel Adaptor: 特点是单向的消息流, 单向进入通道或离开通道</li>
-<li>Messaging Gateway: 不是单向的, 即有进入通道的, 也有离开通道的</li>
-<li>Service Activator: 该节点调用服务来处理输入的消息, 并将服务返回的数据发送到输出通道. 在SpringIntegraion中, 调用的方法被限定为本地方法调用.</li>
-<li>Router: 路由器, 将输入的消息分配到不同的Channel中. </li>
-<li>Splitter: 将输入的Message拆分为子消息</li>
-<li>Aggretator: 将输入的多个消息合并为一个消息. 合并条件通常需要通过事物管理进行控制.</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/10/test-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ZM">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZM-blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/10/test-blog/" class="post-title-link" itemprop="url">test blog</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-05-10 16:34:38 / 修改时间：16:36:45" itemprop="dateCreated datePublished" datetime="2021-05-10T16:34:38+09:00">2021-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Test Context</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1552,7 +1617,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
